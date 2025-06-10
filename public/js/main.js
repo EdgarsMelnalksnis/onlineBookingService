@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('findToolsBtn').addEventListener('click', function () {
         const platform = document.querySelector('select[name="platform"]').value;
@@ -12,41 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getEnhancedRecommendations(platform, budget, customization) {
     const tools = [
-        {
-            name: "TidyCal",
-            platform: "html",
-            budget: "free",
-            customization: "low",
-            tutorial: "tidycal"
-        },
-        {
-            name: "Wix Bookings (Free)",
-            platform: "html",
-            budget: "free",
-            customization: "low",
-            tutorial: "wix-bookings-free"
-        },
-        {
-            name: "Calendly Pro",
-            platform: "html",
-            budget: "25",
-            customization: "high",
-            tutorial: "calendly-pro"
-        },
-        {
-            name: "Amelia Lite",
-            platform: "wordpress",
-            budget: "free",
-            customization: "low",
-            tutorial: "amelia-lite"
-        },
-        {
-            name: "Bookly Pro (Basic)",
-            platform: "wordpress",
-            budget: "25",
-            customization: "low",
-            tutorial: "bookly-pro-basic"
-        }
+        { name: "TidyCal", platform: "html", budget: "free", customization: "low", tutorial: "tidycal" },
+        { name: "Wix Bookings (Free)", platform: "wix", budget: "free", customization: "low", tutorial: "wix-bookings-free" },
+        { name: "Wix Bookings Pro", platform: "wix", budget: "25", customization: "high", tutorial: "wix-bookings-pro" },
+        { name: "Calendly Pro", platform: "html", budget: "25", customization: "high", tutorial: "calendly-pro" },
+        { name: "Amelia Lite", platform: "wordpress", budget: "free", customization: "low", tutorial: "amelia-lite" },
+        { name: "Amelia Pro", platform: "wordpress", budget: "25", customization: "high", tutorial: "amelia-pro" },
+        { name: "Bookly Pro (Basic)", platform: "wordpress", budget: "25", customization: "low", tutorial: "bookly-pro-basic" },
+        { name: "Acuity Free", platform: "squarespace", budget: "free", customization: "medium", tutorial: "acuity-scheduling-free-tier" },
+        { name: "Acuity Paid", platform: "squarespace", budget: "25", customization: "high", tutorial: "acuity-scheduling-paid" },
+        { name: "BookThatApp", platform: "shopify", budget: "10", customization: "medium", tutorial: "bookthatapp-basic" },
+        { name: "Sesami", platform: "shopify", budget: "25", customization: "high", tutorial: "sesami-or-appointly" },
+        { name: "SimplyBook.me", platform: "html", budget: "free", customization: "medium", tutorial: "simplybookme" },
+        { name: "Google Appointments", platform: "html", budget: "free", customization: "low", tutorial: "google-appointment" }
     ];
 
     return tools.filter(tool =>
@@ -78,3 +55,4 @@ function renderResults(tools) {
         `;
     });
 }
+
