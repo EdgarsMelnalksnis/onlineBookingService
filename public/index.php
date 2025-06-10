@@ -4,13 +4,9 @@
     <h2 class="text-3xl font-semibold mb-4">Find the Best Booking Tool</h2>
     <p class="mb-6 text-gray-600">Use our calculator to choose the right tool based on your needs.</p>
 
-    <button onclick="toggleCalculator()" 
-        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-        📊 Show/Hide Calculator
-    </button>
-</section>
+    </section>
 
-<section id="calculator" class="overflow-hidden transition-all max-h-0 bg-white rounded shadow mb-10 duration-700">
+<section id="calculator" class="transition-all max-h-screen bg-white rounded shadow mb-10 duration-700">
     <div class="p-6">
         <form id="toolForm" class="grid gap-4 max-w-2xl mx-auto">
             <div>
@@ -49,60 +45,83 @@
         <div id="results" class="mt-8"></div>
     </div>
 </section>
-<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/edgars-melnalksnis/30min" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
 <!-- Google Calendar Appointment Scheduling begin -->
-<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ02fSQ10uXsQLeUOePhGDIrk-Fm3fFDFqS9aVtqwOGP8vrlBMVNP0CNu8Dp496ltxtBZnXlA8wZ?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+
 <!-- end Google Calendar Appointment Scheduling -->
 <script>
-function toggleCalculator() {
-    const section = document.getElementById('calculator');
-    if (section.classList.contains('max-h-0')) {
-        section.classList.remove('max-h-0');
-        section.classList.add('max-h-[1200px]');
-    } else {
-        section.classList.remove('max-h-[1200px]');
-        section.classList.add('max-h-0');
-    }
+document.getElementById('toolForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const platform = this.platform.value;
+  const budget = this.budget.value;
+  const customization = this.customization.value;
+  const results = document.getElementById('results');
+  let suggestions = [];
+
+  if (platform === "wordpress") {
+    if (budget === "free") suggestions.push(["Amelia Lite", "Basic booking plugin for WordPress."]);
+    else if (budget === "10" || budget === "25") suggestions.push(["Bookly PRO (basic)", "Flexible plugin with add-ons."]);
+    else suggestions.push(["Amelia Pro", "Full-featured system with payments and sync."]);
+  }
+
+  if (platform === "html") {
+    if (budget === "free") suggestions.push(["Google Appointment", "Embed Google Calendar."]);
+    else if (budget === "10" || budget === "25") suggestions.push(["TidyCal", "Budget-friendly external tool."]);
+    else suggestions.push(["SimplyBook.me", "White-labeled, customizable solution."]);
+  }
+
+  if (platform === "wix") {
+    if (budget === "free") suggestions.push(["Wix Bookings (Free)", "Easy built-in tool."]);
+    else if (budget === "10" || budget === "25") suggestions.push(["Wix Bookings + Add-ons", "Extra features and calendar tools."]);
+    else suggestions.push(["Wix Bookings Pro", "CRM, SMS, and full branding."]);
+  }
+
+  if (platform === "shopify") {
+    if (budget === "10" || budget === "25") suggestions.push(["BookThatApp (Basic)", "Basic Shopify booking system."]);
+    else suggestions.push(["Sesami or Appointly", "Advanced ecommerce booking."]);
+  }
+
+  if (platform === "squarespace") {
+    if (budget === "free") suggestions.push(["Acuity Scheduling (Free)", "Simple Squarespace integration."]);
+    else if (budget === "10" || budget === "25") suggestions.push(["Acuity Scheduling (Paid)", "More integrations and options."]);
+    else suggestions.push(["Calendly Pro", "Premium scheduling experience."]);
+  }
+
+  if (suggestions.length === 0) {
+    results.innerHTML = '<p class="text-red-500">No tools found. Try different options.</p>';
+    return;
+  }
+
+  results.innerHTML = '<h2 class="text-xl font-semibold mb-4">Recommended Tools:</h2>' + suggestions.map(tool => `
+    <div class="p-4 border rounded bg-gray-50 mb-4">
+      <h3 class="text-lg font-bold">${tool[0]}</h3>
+      <p class="mb-2">${tool[1]}</p>
+      <div class="flex gap-4">
+        <button onclick="openTutorial('${tool[0]}')" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">I'll do it myself</button>
+        <button onclick="requestHelp('${tool[0]}')" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Please help me with this</button>
+      </div>
+    </div>
+  `).join('');
+});
+
+function openTutorial(tool) {
+  const file = tool.toLowerCase().replace(/ /g, '-').replace(/[()./]/g, '') + '.html';
+  fetch('tutorials/' + file)
+    .then(res => res.text())
+    .then(html => {
+      html = html.replace(/<\/?(html|head|body)[^>]*>/gi, '');
+      document.getElementById('results').innerHTML = html;
+    });
 }
 
-document.getElementById('toolForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const platform = form.platform.value;
-    const budget = form.budget.value;
-    const customization = form.customization.value;
-    let suggestions = [];
-
-    if (platform === "wordpress" && budget === "free") {
-        suggestions.push(["Amelia Lite", "Free WordPress plugin with basic booking features."]);
-    }
-    if (platform === "html" && budget === "free") {
-        suggestions.push(["Google Appointment Embed", "Simple and free for static sites."]);
-    }
-    if (budget === "10" && customization !== "high") {
-        suggestions.push(["TidyCal", "Affordable and clean interface."]);
-    }
-    if (budget === "25" || budget === "unlimited") {
-        suggestions.push(["SimplyBook.me", "Advanced tool with payments and branding."]);
-        suggestions.push(["Calendly Pro", "Powerful with integrations and team features."]);
-    }
-
-    const results = document.getElementById('results');
-    if (suggestions.length === 0) {
-        results.innerHTML = '<p class="text-center text-red-500">No matching tools found. Try adjusting your selections.</p>';
-    } else {
-        results.innerHTML = '<h3 class="text-xl font-semibold mb-4">🧠 Recommended Tools:</h3>' +
-            suggestions.map(tool => `
-                <div class="p-4 border rounded bg-gray-50 mb-2">
-                    <h4 class="text-lg font-bold">${tool[0]}</h4>
-                    <p class="text-sm text-gray-600">${tool[1]}</p>
-                </div>
-            `).join('');
-    }
-});
+function requestHelp(tool) {
+  alert('We will help you implement: ' + tool);
+}
 </script>
 
 <?php include_once '../includes/footer.php'; ?>
+
+
+<div style="text-align: center; margin-top: 30px;">
+    <button onclick="toggleCalendly()" style="padding: 10px 20px; margin: 10px;">Show Calendly</button>
+    <button onclick="toggleGoogleCalendar()" style="padding: 10px 20px; margin: 10px;">Show Google Calendar</button>
+</div>
