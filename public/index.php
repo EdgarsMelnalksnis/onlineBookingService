@@ -49,6 +49,10 @@
         <div id="results" class="mt-8"></div>
     </div>
 </section>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/edgars-melnalksnis/30min" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
 <!-- Google Calendar Appointment Scheduling begin -->
 <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ02fSQ10uXsQLeUOePhGDIrk-Fm3fFDFqS9aVtqwOGP8vrlBMVNP0CNu8Dp496ltxtBZnXlA8wZ?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
 <!-- end Google Calendar Appointment Scheduling -->
