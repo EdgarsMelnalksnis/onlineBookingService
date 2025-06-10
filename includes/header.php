@@ -11,6 +11,8 @@
         <div class="max-w-4xl mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">📆 Booking Integrator</h1>
             <nav class="space-x-4">
+                <a href="index.php" class="text-blue-600 hover:underline">Home</a>
+                <a href="contact.php" class="text-blue-600 hover:underline">Contact</a>
 <!-- Google Calendar Appointment Scheduling begin -->
 <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
@@ -28,14 +30,7 @@
 })();
 </script>
 <!-- end Google Calendar Appointment Scheduling -->
-                <a href="index.php" class="text-blue-600 hover:underline">Home</a>
-                <a href="compare.php" class="text-blue-600 hover:underline">Compare</a>
-                <a href="demo.php" class="text-blue-600 hover:underline">Demo</a>
-                <a href="contact.php" class="text-blue-600 hover:underline">Contact</a>
             </nav>
         </div>
     </header>
-
-    <!-- Main content wrapper -->
     <main class="flex-grow max-w-4xl mx-auto px-4 py-8">
-
