@@ -1,0 +1,3 @@
+<?php
+// mailer.php
+?>

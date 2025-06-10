@@ -1,0 +1,1 @@
+CREATE TABLE help_requests (id INTEGER PRIMARY KEY, name TEXT, email TEXT, message TEXT);

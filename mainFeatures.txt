@@ -1,0 +1,55 @@
+✅ Main Features
+1. Landing Page
+Bold, clean branding (logo, intro)
+
+Tagline: “Turn your visitors into bookings in minutes.”
+
+CTA buttons: “Get Started”, “Book Integration Help”, “Try a Demo”
+
+2. Platform Selector
+Let users choose:
+
+Website type: WordPress, Wix, Static HTML, Shopify
+
+Booking type: One-on-one, group classes, calendar sync, payments
+
+➡️ Based on selection, route them to a step-by-step integration guide
+
+3. Integration Guides
+For each combo:
+
+Google Calendar via Embed or Appointment Schedule
+
+Calendly
+
+WordPress plugins (Amelia, Bookly, etc.)
+
+Embed-ready tools like SimplyBook.me or Zoho Bookings
+
+Each step includes:
+
+Clear visuals or short video
+
+Copy-paste embed codes
+
+Optional buttons for “Hire Us to Do It”
+
+4. Live Booking Demo
+Simulate a working booking widget
+
+Preview with different providers (Calendly, Google, etc.)
+
+5. Booking Tools Comparison Page
+Filterable list comparing top tools by price, features, ease of use
+
+Add badges (e.g. “Best for Small Business”, “Free Forever”)
+
+6. Optional Paid Integration Help
+Contact form or booking system to request integration help
+
+Tiered pricing: Free advice, Standard setup, Full custom branding
+
+7. Admin Panel (Optional)
+Track which integration paths users follow
+
+Add/edit guides and comparison data

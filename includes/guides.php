@@ -1,0 +1,3 @@
+<?php
+// guides.php
+?>
