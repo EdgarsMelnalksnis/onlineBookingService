@@ -1,1 +1,33 @@
-/* Basic CSS */
+/* Base Styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f9fafb;
+    color: #374151;
+    line-height: 1.6;
+}
+
+/* Form Elements */
+select, button {
+    transition: all 0.2s ease;
+}
+
+/* Tool Cards */
+.tool-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #calculator {
+        padding: 1.5rem;
+    }
+    
+    #toolForm {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

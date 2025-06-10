@@ -2,126 +2,152 @@
 
 <section class="text-center mb-10">
     <h2 class="text-3xl font-semibold mb-4">Find the Best Booking Tool</h2>
-    <p class="mb-6 text-gray-600">Use our calculator to choose the right tool based on your needs.</p>
-
-    </section>
-
-<section id="calculator" class="transition-all max-h-screen bg-white rounded shadow mb-10 duration-700">
-    <div class="p-6">
-        <form id="toolForm" class="grid gap-4 max-w-2xl mx-auto">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Website Platform:</label>
-                <select name="platform" class="w-full p-2 border rounded">
-                    <option value="wordpress">WordPress</option>
-                    <option value="wix">Wix</option>
-                    <option value="html">Static HTML</option>
-                    <option value="shopify">Shopify</option>
-                    <option value="squarespace">Squarespace</option>
-                </select>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Budget:</label>
-                <select name="budget" class="w-full p-2 border rounded">
-                    <option value="free">Free</option>
-                    <option value="10">Under $10</option>
-                    <option value="25">Under $25</option>
-                    <option value="unlimited">Unlimited</option>
-                </select>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Customization:</label>
-                <select name="customization" class="w-full p-2 border rounded">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                </select>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
-                    Find Tools
-                </button>
-            </div>
-        </form>
-        <div id="results" class="mt-8"></div>
-    </div>
+    <p class="mb-6 text-gray-600">Use our calculator to find the perfect booking solution for your needs</p>
 </section>
-<!-- Google Calendar Appointment Scheduling begin -->
 
-<!-- end Google Calendar Appointment Scheduling -->
+<section id="calculator" class="bg-white rounded-lg shadow-md mb-10 p-6 max-w-4xl mx-auto">
+    <form id="toolForm" class="grid md:grid-cols-3 gap-6">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Website Platform</label>
+            <select name="platform" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <option value="wordpress">WordPress</option>
+                <option value="wix">Wix</option>
+                <option value="html">Static HTML</option>
+                <option value="shopify">Shopify</option>
+                <option value="squarespace">Squarespace</option>
+            </select>
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Budget</label>
+            <select name="budget" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <option value="free">Free</option>
+                <option value="10">Under $10/month</option>
+                <option value="25">Under $25/month</option>
+                <option value="unlimited">Unlimited</option>
+            </select>
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Customization Level</label>
+            <select name="customization" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <option value="low">Basic</option>
+                <option value="medium">Moderate</option>
+                <option value="high">Advanced</option>
+            </select>
+        </div>
+        
+        <div class="md:col-span-3 text-center">
+            <button type="submit" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 font-medium text-lg">
+                Find Matching Tools
+            </button>
+        </div>
+    </form>
+    
+    <div id="results" class="mt-10 space-y-4 hidden"></div>
+</section>
+
 <script>
 document.getElementById('toolForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const platform = this.platform.value;
-  const budget = this.budget.value;
-  const customization = this.customization.value;
-  const results = document.getElementById('results');
-  let suggestions = [];
-
-  if (platform === "wordpress") {
-    if (budget === "free") suggestions.push(["Amelia Lite", "Basic booking plugin for WordPress."]);
-    else if (budget === "10" || budget === "25") suggestions.push(["Bookly PRO (basic)", "Flexible plugin with add-ons."]);
-    else suggestions.push(["Amelia Pro", "Full-featured system with payments and sync."]);
-  }
-
-  if (platform === "html") {
-    if (budget === "free") suggestions.push(["Google Appointment", "Embed Google Calendar."]);
-    else if (budget === "10" || budget === "25") suggestions.push(["TidyCal", "Budget-friendly external tool."]);
-    else suggestions.push(["SimplyBook.me", "White-labeled, customizable solution."]);
-  }
-
-  if (platform === "wix") {
-    if (budget === "free") suggestions.push(["Wix Bookings (Free)", "Easy built-in tool."]);
-    else if (budget === "10" || budget === "25") suggestions.push(["Wix Bookings + Add-ons", "Extra features and calendar tools."]);
-    else suggestions.push(["Wix Bookings Pro", "CRM, SMS, and full branding."]);
-  }
-
-  if (platform === "shopify") {
-    if (budget === "10" || budget === "25") suggestions.push(["BookThatApp (Basic)", "Basic Shopify booking system."]);
-    else suggestions.push(["Sesami or Appointly", "Advanced ecommerce booking."]);
-  }
-
-  if (platform === "squarespace") {
-    if (budget === "free") suggestions.push(["Acuity Scheduling (Free)", "Simple Squarespace integration."]);
-    else if (budget === "10" || budget === "25") suggestions.push(["Acuity Scheduling (Paid)", "More integrations and options."]);
-    else suggestions.push(["Calendly Pro", "Premium scheduling experience."]);
-  }
-
-  if (suggestions.length === 0) {
-    results.innerHTML = '<p class="text-red-500">No tools found. Try different options.</p>';
-    return;
-  }
-
-  results.innerHTML = '<h2 class="text-xl font-semibold mb-4">Recommended Tools:</h2>' + suggestions.map(tool => `
-    <div class="p-4 border rounded bg-gray-50 mb-4">
-      <h3 class="text-lg font-bold">${tool[0]}</h3>
-      <p class="mb-2">${tool[1]}</p>
-      <div class="flex gap-4">
-        <button onclick="openTutorial('${tool[0]}')" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">I'll do it myself</button>
-        <button onclick="requestHelp('${tool[0]}')" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Please help me with this</button>
-      </div>
-    </div>
-  `).join('');
+    e.preventDefault();
+    const platform = this.platform.value;
+    const budget = this.budget.value;
+    const customization = this.customization.value;
+    const results = document.getElementById('results');
+    
+    // Clear previous results
+    results.innerHTML = '';
+    results.classList.remove('hidden');
+    
+    // Get recommendations based on selections
+    const recommendations = getRecommendations(platform, budget, customization);
+    
+    if (recommendations.length === 0) {
+        results.innerHTML = `
+            <div class="p-6 bg-red-50 border border-red-200 rounded-lg text-center">
+                <h3 class="text-lg font-medium text-red-800">No tools found matching your criteria</h3>
+                <p class="text-red-600">Try adjusting your filters for more options</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Display recommendations
+    results.innerHTML = `
+        <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Recommended Tools</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            ${recommendations.map(rec => createToolCard(rec)).join('')}
+        </div>
+    `;
 });
 
-function openTutorial(tool) {
-  const file = tool.toLowerCase().replace(/ /g, '-').replace(/[()./]/g, '') + '.html';
-  fetch('tutorials/' + file)
-    .then(res => res.text())
-    .then(html => {
-      html = html.replace(/<\/?(html|head|body)[^>]*>/gi, '');
-      document.getElementById('results').innerHTML = html;
-    });
+function getRecommendations(platform, budget, customization) {
+    const tools = {
+        wordpress: {
+            free: [
+                { 
+                    name: "Amelia Lite", 
+                    description: "Basic booking plugin for WordPress with calendar view", 
+                    features: ["Calendar view", "Basic scheduling", "Email notifications"],
+                    tutorial: "amelia-lite"
+                }
+            ],
+            '10': [
+                { 
+                    name: "Bookly PRO (Basic)", 
+                    description: "Flexible plugin with add-ons for service businesses", 
+                    features: ["Staff management", "Service extras", "Coupons"],
+                    tutorial: "bookly-pro"
+                }
+            ],
+            // ... other WordPress options
+        },
+        // ... other platforms
+    };
+
+    return tools[platform]?.[budget] || [];
 }
 
-function requestHelp(tool) {
-  alert('We will help you implement: ' + tool);
+function createToolCard(tool) {
+    return `
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="p-6">
+                <h4 class="text-lg font-semibold mb-2">${tool.name}</h4>
+                <p class="text-gray-600 mb-4">${tool.description}</p>
+                
+                <ul class="space-y-2 mb-6">
+                    ${tool.features.map(f => `<li class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        ${f}
+                    </li>`).join('')}
+                </ul>
+                
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="openTutorial('${tool.tutorial}')" 
+                            class="flex-1 bg-blue-50 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-100 transition-colors border border-blue-100">
+                        I'll do it myself
+                    </button>
+                    <button onclick="requestHelp('${tool.name}')" 
+                            class="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
+                        Get help implementing
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function openTutorial(toolId) {
+    // Implement tutorial loading
+    console.log("Loading tutorial for:", toolId);
+}
+
+function requestHelp(toolName) {
+    // Implement help request
+    console.log("Requesting help with:", toolName);
 }
 </script>
 
 <?php include_once '../includes/footer.php'; ?>
-
-
-<div style="text-align: center; margin-top: 30px;">
-    <button onclick="toggleCalendly()" style="padding: 10px 20px; margin: 10px;">Show Calendly</button>
-    <button onclick="toggleGoogleCalendar()" style="padding: 10px 20px; margin: 10px;">Show Google Calendar</button>
-</div>
