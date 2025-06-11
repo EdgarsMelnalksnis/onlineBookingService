@@ -59,10 +59,14 @@ function getEnhancedRecommendations(platform, budget, customization) {
     });
 }
 
-
 function logDebug(msg) {
     const out = document.getElementById('debugOutput');
-    out.textContent += "\n" + msg;
+    if (out) {
+        out.textContent += "\\n" + msg;
+    } else {
+        // fallback to console if no debug window exists
+        console.log("[DEBUG]", msg);
+    }
 }
 
 function renderResults(tools) {

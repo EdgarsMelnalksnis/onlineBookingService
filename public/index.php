@@ -59,6 +59,15 @@
 
 <?php include_once '../includes/footer.php'; ?>
 
+<!-- 🔍 Smart Website CMS Detection Tool -->
+<div id="cms-detector" style="margin-top: 50px; padding: 20px; border: 1px solid #ccc;">
+  <h2>🔍 Smart CMS Detection</h2>
+  <p>Paste your website URL to detect its platform and get integration options:</p>
+  <input type="text" id="site-url" placeholder="https://yourwebsite.com" style="width: 60%; padding: 8px;">
+  <button onclick="detectCMS()" style="padding: 8px 16px; margin-left: 10px;">Detect</button>
+  <div id="detection-result" style="margin-top: 20px;"></div>
+</div>
+
 <script src="js/cms-detector.js"></script>
 
 <script src="js/main.js"></script>
