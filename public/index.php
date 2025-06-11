@@ -49,7 +49,7 @@
 
   <!-- Right: Illustration + Results -->
   <div class="flex flex-col items-center justify-center">
-    <img src="images/goalUI.png" alt="Booking Illustration" class="w-64 mb-6 rounded-xl shadow-md" />
+    <img src="images/goalUI.png" alt="Booking Illustration" class="w-64 mb-6" />
     <div id="resultsContainer" class="w-full bg-white rounded-xl shadow-md p-6">
       <p class="text-gray-700">Recommended Tools will appear here...</p>
     </div>
