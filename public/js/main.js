@@ -85,8 +85,8 @@ function renderResults(tools) {
                 <h3 class='text-lg font-bold mb-2'>${tool.name}</h3>
                 <p><a class='text-blue-700 underline' href='/tutorials/${tool.tutorial}.html' target='_blank'>View Tutorial</a></p>
                 <div class='mt-4 flex gap-2'>
-                    <button class='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700'>I’ll do it myself</button>
-                    <button class='bg-gray-200 px-4 py-2 rounded hover:bg-gray-300'>Please help me</button>
+                    <button class='bg-gray-200 px-4 py-2 rounded hover:bg-gray-300'>I’ll do it myself</button>
+                    <button class='bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700'>Please help me</button>
                 </div>
             </div>
         `;
