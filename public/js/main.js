@@ -1,10 +1,16 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('findToolsBtn').addEventListener('click', function () {
         const platform = document.querySelector('select[name="platform"]').value;
         const budget = document.querySelector('select[name="budget"]').value;
         const customization = document.querySelector('select[name="customization"]').value;
 
-        const results = getEnhancedRecommendations(platform, budget, customization);
+        
+    logDebug("Reading selected filters...");
+    logDebug("Platform: " + platform + ", Budget: " + budget + ", Customization: " + customization);
+    const results = getEnhancedRecommendations(platform, budget, customization);
+    logDebug("Found " + results.length + " matching tools.");
+    
         renderResults(results);
     });
 });
@@ -26,14 +32,41 @@ function getEnhancedRecommendations(platform, budget, customization) {
         { name: "Google Appointments", platform: "html", budget: "free", customization: "low", tutorial: "google-appointment" }
     ];
 
-    return tools.filter(tool =>
-        tool.platform === platform &&
-        tool.budget === budget &&
-        tool.customization === customization
-    );
+    const customizationRanks = {
+        low: 1,
+        medium: 2,
+        high: 3
+    };
+
+    const budgetToNumber = {
+        free: 0,
+        "10": 10,
+        "25": 25,
+        unlimited: Infinity
+    };
+
+    const userBudget = budgetToNumber[budget];
+    const userCustomization = customizationRanks[customization];
+
+    return tools.filter(tool => {
+        const toolBudget = budgetToNumber[tool.budget];
+        const toolCustomization = customizationRanks[tool.customization];
+        return (
+            tool.platform === platform &&
+            toolBudget <= userBudget &&
+            toolCustomization >= userCustomization
+        );
+    });
+}
+
+
+function logDebug(msg) {
+    const out = document.getElementById('debugOutput');
+    out.textContent += "\n" + msg;
 }
 
 function renderResults(tools) {
+
     const container = document.getElementById('resultsContainer');
     container.innerHTML = "";
 
@@ -44,7 +77,7 @@ function renderResults(tools) {
 
     tools.forEach(tool => {
         container.innerHTML += `
-            <div class='bg-blue-100 p-4 rounded-lg shadow'>
+            <div class='bg-blue-100 p-4 rounded-lg shadow mb-4'>
                 <h3 class='text-lg font-bold mb-2'>${tool.name}</h3>
                 <p><a class='text-blue-700 underline' href='/tutorials/${tool.tutorial}.html' target='_blank'>View Tutorial</a></p>
                 <div class='mt-4 flex gap-2'>
@@ -55,4 +88,3 @@ function renderResults(tools) {
         `;
     });
 }
-

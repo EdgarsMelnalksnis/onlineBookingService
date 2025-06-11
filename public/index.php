@@ -14,7 +14,7 @@
       <div>
         <label class="block font-medium text-gray-700 mb-1">Website Platform</label>
         <select name="platform" class="w-full p-3 border border-gray-300 rounded-lg">
-          <option value="wordpress">WordPress</option>
+          <option value="wordpress" selected>WordPress</option>
           <option value="wix">Wix</option>
           <option value="html">Static HTML</option>
           <option value="shopify">Shopify</option>
@@ -25,7 +25,7 @@
       <div>
         <label class="block font-medium text-gray-700 mb-1">Budget</label>
         <select name="budget" class="w-full p-3 border border-gray-300 rounded-lg">
-          <option value="free">Free</option>
+          <option value="free" selected>Free</option>
           <option value="10">Under $10/month</option>
           <option value="25">Under $25/month</option>
           <option value="unlimited">Unlimited</option>
@@ -35,7 +35,7 @@
       <div>
         <label class="block font-medium text-gray-700 mb-1">Customization Level</label>
         <select name="customization" class="w-full p-3 border border-gray-300 rounded-lg">
-          <option value="low">Basic</option>
+          <option value="low" selected>Basic</option>
           <option value="medium">Medium</option>
           <option value="high">Advanced</option>
         </select>
@@ -54,6 +54,11 @@
       <p class="text-gray-700">Recommended Tools will appear here...</p>
     </div>
   </div>
+
 </section>
 
 <?php include_once '../includes/footer.php'; ?>
+
+<script src="js/cms-detector.js"></script>
+
+<script src="js/main.js"></script>
