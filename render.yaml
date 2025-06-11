@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: booking-tool
+    env: php
+    buildCommand: ""
+    startCommand: ""
+    plan: free
+    rootDir: public
+
