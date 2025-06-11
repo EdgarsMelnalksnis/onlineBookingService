@@ -1,9 +1,8 @@
 services:
   - type: web
-    name: booking-tool
-    env: php
-    buildCommand: ""
-    startCommand: ""
+    name: php-booking-tool
+    env: docker
     plan: free
-    rootDir: public
+    buildCommand: ""
+    startCommand: ./start.sh
 
